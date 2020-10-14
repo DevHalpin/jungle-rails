@@ -4,7 +4,7 @@
     <h1>My Cart</h1>
   </header>
 
-<% unless enhanced_cart %>
+  <% if enhanced_cart.length > 0 %>
     <div class="panel panel-default items">
       <table class="table table-bordered">
         <thead>
@@ -52,8 +52,8 @@
 
   </section>
 
-<% else %>
-<h2 class= "alert alert-danger"> Your cart is empty.  Please add some items to it or go back to
-<%= link_to "Home", '/' %> </h2>
+ <% else %>
+ <h2 class= "alert alert-danger"> Your cart is empty.  Please add some items to it or go back to
+ <%= link_to "Home", '/' %> </h2>
 
-<% end %>
+ <% end %>
