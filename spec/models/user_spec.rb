@@ -57,6 +57,24 @@ RSpec.describe User, type: :model do
       @user = User.authenticate_with_credentials('user@test.com','123')
       expect(@user).to_not be_nil
     end
+
+    it "returns nil if user doesn't exist" do
+      subject.save
+      @user = User.authenticate_with_credentials('example@example.com','password')
+      expect(@user).to be_nil
+    end
+
+    it "returns the user even if there are trailing or leading spaces" do
+      subject.save
+      @user = User.authenticate_with_credentials('   user@test.com   ','123')
+      expect(@user).to_not be_nil
+    end
+
+    it "returns the user with wrong case" do
+      subject.save
+      @user = User.authenticate_with_credentials('uSer@tesT.Com','123')
+      expect(@user).to_not be_nil
+    end
   end
 end
 
