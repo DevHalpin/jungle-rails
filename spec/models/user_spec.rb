@@ -50,5 +50,13 @@ RSpec.describe User, type: :model do
       expect(subject).to_not be_valid
     end
   end
+
+  describe '.authenticate_with_credentials' do
+    it 'returns the user if user exists' do
+      subject.save
+      @user = User.authenticate_with_credentials('user@test.com','123')
+      expect(@user).to_not be_nil
+    end
+  end
 end
 
